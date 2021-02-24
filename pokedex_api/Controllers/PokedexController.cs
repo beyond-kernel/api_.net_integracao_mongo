@@ -60,7 +60,6 @@ namespace pokedex_api.Controllers
             
             var database = client.GetDatabase("pokemon_center");
             
-
             var pokemonCollection = database.GetCollection<Pokemon>("pokemon");
 
             var PokemonsDocumets = pokemonCollection.AsQueryable<Pokemon>().ToList();
