@@ -24,6 +24,10 @@ C:\Users\rafan\Documents\teste\pokedex_api\bin\Debug\net5.0\Swashbuckle.AspNetCo
 C:\Users\rafan\Documents\teste\pokedex_api\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
 C:\Users\rafan\Documents\teste\pokedex_api\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
 C:\Users\rafan\Documents\teste\pokedex_api\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
+C:\Users\rafan\Documents\teste\pokedex_api\bin\Debug\net5.0\Domain.dll
+C:\Users\rafan\Documents\teste\pokedex_api\bin\Debug\net5.0\Model.dll
+C:\Users\rafan\Documents\teste\pokedex_api\bin\Debug\net5.0\Domain.pdb
+C:\Users\rafan\Documents\teste\pokedex_api\bin\Debug\net5.0\Model.pdb
 C:\Users\rafan\Documents\teste\pokedex_api\obj\Debug\net5.0\pokedex_api.csprojAssemblyReference.cache
 C:\Users\rafan\Documents\teste\pokedex_api\obj\Debug\net5.0\pokedex_api.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\rafan\Documents\teste\pokedex_api\obj\Debug\net5.0\pokedex_api.AssemblyInfoInputs.cache

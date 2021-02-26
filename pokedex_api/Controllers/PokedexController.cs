@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using pokedex_api.Models;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
+using Domain;
+using Model;
 
 namespace pokedex_api.Controllers
 {
@@ -16,55 +15,66 @@ namespace pokedex_api.Controllers
     [Route("api/Pokedex/[action]")]
     public class PokedexController
     {
+
+        private IDbConnect _dbConnnect;
+
+        public PokedexController(IDbConnect dbConnnect)
+        {
+            _dbConnnect = dbConnnect;
+        }
+
+
         [HttpGet]
         public IEnumerable<Pokemon> GetPokemonList()
         {
-            var client = new MongoClient(
-                        "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false"
-                    );
 
-            var database = client.GetDatabase("pokemon_center");
+            var database = _dbConnnect.Connect();
 
             var pokemonCollection = database.GetCollection<Pokemon>("pokemon");
 
-            var PokemonsDocumets = pokemonCollection.AsQueryable<Pokemon>().ToList();
-
-            var pokemons = new List<Pokemon>();
-
-            foreach (var pokemon in PokemonsDocumets)
-            {
-                pokemons.Add(new Pokemon(){  
-                    Id = pokemon.Id,
-                    Types = pokemon.Types,
-                    Name = pokemon.Name,  
-                    Legendary = pokemon.Legendary,
-                    Hp = pokemon.Hp,
-                    Attack = pokemon.Attack,
-                    Defense = pokemon.Defense,
-                    Speed = pokemon.Speed,
-                    Generation = pokemon.Generation
-                });
-             
-            }   
-
-
-            return pokemons;
+            return pokemonCollection.AsQueryable().ToList();
         }
 
         [HttpPost]
-        public Pokemon GetPokemonByName([FromBody] string name)
+        public List<Pokemon> GetPokemonByName([FromBody] string name)
         {
-            var client = new MongoClient(
-                      "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false"
-                  );
-            
-            var database = client.GetDatabase("pokemon_center");
-            
+
+            var database = _dbConnnect.Connect();
+
             var pokemonCollection = database.GetCollection<Pokemon>("pokemon");
 
-            var PokemonsDocumets = pokemonCollection.AsQueryable<Pokemon>().ToList();
+            var PokemonsDocumets = pokemonCollection.AsQueryable().ToList();
 
-            return PokemonsDocumets.Find(n => n.Name == name);
+            return PokemonsDocumets.FindAll(p => p.Name.Contains(name));
+        }
+
+        [HttpPost]
+        public List<Pokemon> GetPokemonByTypes([FromBody] List<string> types)
+        {
+
+            if (types.Count() < 1 || types[0] == "")
+            {
+                return this.GetPokemonList().ToList();
+            }
+            else if (types.Count() > 2)
+            {
+                throw new Exception("Pokemons só podem ter máximo 2 types");
+            }
+         
+            var database = _dbConnnect.Connect();
+
+            var pokemonCollection = database.GetCollection<Pokemon>("pokemon");
+
+            var PokemonsDocumets = pokemonCollection.AsQueryable().ToList();
+
+            var pokemons = (from pokemon in PokemonsDocumets
+                                        where 
+                                        pokemon.Types.Contains(types[0]) 
+                                        &&
+                                        pokemon.Types.Contains(types.Count() > 1 ? types[1] : types[0])
+                                        select pokemon).ToList();      
+
+            return pokemons; 
         }
     }
 }
