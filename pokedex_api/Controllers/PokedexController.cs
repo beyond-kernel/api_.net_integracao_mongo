@@ -30,9 +30,9 @@ namespace pokedex_api.Controllers
 
             var database = _dbConnnect.Connect();
 
-            var pokemonCollection = database.GetCollection<Pokemon>("pokemon");
+            var pokemonCollection = database.GetCollection<Pokemon>("pokemon").AsQueryable().ToList();
 
-            return pokemonCollection.AsQueryable().ToList();
+            return pokemonCollection;
         }
 
         [HttpPost]
@@ -41,15 +41,13 @@ namespace pokedex_api.Controllers
 
             var database = _dbConnnect.Connect();
 
-            var pokemonCollection = database.GetCollection<Pokemon>("pokemon");
+            var pokemonCollection = database.GetCollection<Pokemon>("pokemon").AsQueryable().ToList();
 
-            var PokemonsDocumets = pokemonCollection.AsQueryable().ToList();
-
-            return PokemonsDocumets.FindAll(p => p.Name.Contains(name));
+            return pokemonCollection.FindAll(p => p.Name.Contains(name));
         }
 
         [HttpPost]
-        public List<Pokemon> GetPokemonByTypes([FromBody] List<string> types)
+        public List<Pokemon> GetPokemonByTypes([FromBody] string[] types)
         {
 
             if (types.Count() < 1 || types[0] == "")
@@ -58,16 +56,14 @@ namespace pokedex_api.Controllers
             }
             else if (types.Count() > 2)
             {
-                throw new Exception("Pokemons só podem ter máximo 2 types");
+                throw new Exception("Pokemons só podem ter máximo 2 tipos");
             }
          
             var database = _dbConnnect.Connect();
 
-            var pokemonCollection = database.GetCollection<Pokemon>("pokemon");
+            var pokemonCollection = database.GetCollection<Pokemon>("pokemon").AsQueryable().ToList();
 
-            var PokemonsDocumets = pokemonCollection.AsQueryable().ToList();
-
-            var pokemons = (from pokemon in PokemonsDocumets
+            var pokemons = (from pokemon in pokemonCollection
                                         where 
                                         pokemon.Types.Contains(types[0]) 
                                         &&
