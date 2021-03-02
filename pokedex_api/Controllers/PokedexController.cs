@@ -27,50 +27,65 @@ namespace pokedex_api.Controllers
         [HttpGet]
         public IEnumerable<Pokemon> GetPokemonList()
         {
+            try
+            {
+                var database = _dbConnnect.Connect();
 
-            var database = _dbConnnect.Connect();
+                var pokemonCollection = database.GetCollection<Pokemon>("pokemon").AsQueryable().ToList();
 
-            var pokemonCollection = database.GetCollection<Pokemon>("pokemon").AsQueryable().ToList();
-
-            return pokemonCollection;
+                return pokemonCollection; 
+            }
+            catch (System.Exception e)
+            {
+                throw new Exception(e.Message);
+            }    
         }
 
         [HttpPost]
         public List<Pokemon> GetPokemonByName([FromBody] string name)
         {
 
-            var database = _dbConnnect.Connect();
+            try
+            {       
+                var database = _dbConnnect.Connect();
 
-            var pokemonCollection = database.GetCollection<Pokemon>("pokemon").AsQueryable().ToList();
+                var pokemonCollection = database.GetCollection<Pokemon>("pokemon").AsQueryable().ToList();
 
-            return pokemonCollection.FindAll(p => p.Name.Contains(name));
+                return pokemonCollection.FindAll(p => p.Name.Contains(name));
+            }
+            catch (System.Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         [HttpPost]
         public List<Pokemon> GetPokemonByTypes([FromBody] string[] types)
         {
-
-            if (types.Count() < 1 || types[0] == "")
+            try
             {
-                return this.GetPokemonList().ToList();
+                if (types.Count() < 1 || types[0] == "")
+                {
+                    return this.GetPokemonList().ToList();
+                }
+                else if (types.Count() > 2)
+                {
+                    throw new Exception("Pokemons só podem ter máximo 2 tipos");
+                }
+                var database = _dbConnnect.Connect();
+                var pokemonCollection = database.GetCollection<Pokemon>("pokemon").AsQueryable().ToList();
+                var pokemons = (from pokemon in pokemonCollection
+                                            where 
+                                            pokemon.Types.Contains(types[0]) 
+                                            &&
+                                            pokemon.Types.Contains(types.Count() > 1 ? types[1] : types[0])
+                                            select pokemon).ToList();      
+                return pokemons; 
             }
-            else if (types.Count() > 2)
+            catch (System.Exception e)
             {
-                throw new Exception("Pokemons só podem ter máximo 2 tipos");
+                throw new Exception(e.Message);
             }
-         
-            var database = _dbConnnect.Connect();
-
-            var pokemonCollection = database.GetCollection<Pokemon>("pokemon").AsQueryable().ToList();
-
-            var pokemons = (from pokemon in pokemonCollection
-                                        where 
-                                        pokemon.Types.Contains(types[0]) 
-                                        &&
-                                        pokemon.Types.Contains(types.Count() > 1 ? types[1] : types[0])
-                                        select pokemon).ToList();      
-
-            return pokemons; 
         }
     }
 }
