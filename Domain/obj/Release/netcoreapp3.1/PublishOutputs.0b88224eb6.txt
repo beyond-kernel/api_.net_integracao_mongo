@@ -1,0 +1,12 @@
+C:\app\Domain.dll
+C:\app\Domain.deps.json
+C:\app\Domain.pdb
+C:\app\DnsClient.dll
+C:\app\MongoDB.Bson.dll
+C:\app\MongoDB.Driver.dll
+C:\app\MongoDB.Driver.Core.dll
+C:\app\MongoDB.Libmongocrypt.dll
+C:\app\SharpCompress.dll
+C:\app\runtimes\win\native\libzstd.dll
+C:\app\runtimes\win\native\snappy32.dll
+C:\app\runtimes\win\native\snappy64.dll

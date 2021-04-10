@@ -1,0 +1,13 @@
+C:\Users\rafan\Documents\teste\Domain\bin\Release\netcoreapp3.1\Domain.deps.json
+C:\Users\rafan\Documents\teste\Domain\bin\Release\netcoreapp3.1\Domain.dll
+C:\Users\rafan\Documents\teste\Domain\bin\Release\netcoreapp3.1\Domain.pdb
+C:\Users\rafan\Documents\teste\Domain\obj\Release\netcoreapp3.1\Domain.csproj.AssemblyReference.cache
+C:\Users\rafan\Documents\teste\Domain\obj\Release\netcoreapp3.1\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rafan\Documents\teste\Domain\obj\Release\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
+C:\Users\rafan\Documents\teste\Domain\obj\Release\netcoreapp3.1\Domain.AssemblyInfo.cs
+C:\Users\rafan\Documents\teste\Domain\obj\Release\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache
+C:\Users\rafan\Documents\teste\Domain\obj\Release\netcoreapp3.1\Domain.dll
+C:\Users\rafan\Documents\teste\Domain\obj\Release\netcoreapp3.1\Domain.pdb
+C:\app\build\Domain.deps.json
+C:\app\build\Domain.dll
+C:\app\build\Domain.pdb

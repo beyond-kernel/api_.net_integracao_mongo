@@ -1,0 +1,13 @@
+C:\Users\rafan\Documents\teste\Model\bin\Release\netcoreapp3.1\Model.deps.json
+C:\Users\rafan\Documents\teste\Model\bin\Release\netcoreapp3.1\Model.dll
+C:\Users\rafan\Documents\teste\Model\bin\Release\netcoreapp3.1\Model.pdb
+C:\Users\rafan\Documents\teste\Model\obj\Release\netcoreapp3.1\Model.csproj.AssemblyReference.cache
+C:\Users\rafan\Documents\teste\Model\obj\Release\netcoreapp3.1\Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rafan\Documents\teste\Model\obj\Release\netcoreapp3.1\Model.AssemblyInfoInputs.cache
+C:\Users\rafan\Documents\teste\Model\obj\Release\netcoreapp3.1\Model.AssemblyInfo.cs
+C:\Users\rafan\Documents\teste\Model\obj\Release\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
+C:\Users\rafan\Documents\teste\Model\obj\Release\netcoreapp3.1\Model.dll
+C:\Users\rafan\Documents\teste\Model\obj\Release\netcoreapp3.1\Model.pdb
+C:\app\build\Model.deps.json
+C:\app\build\Model.dll
+C:\app\build\Model.pdb

@@ -1,0 +1,11 @@
+C:\Users\rafan\Documents\teste\Model\bin\Debug\net5.0\Model.deps.json
+C:\Users\rafan\Documents\teste\Model\bin\Debug\net5.0\Model.dll
+C:\Users\rafan\Documents\teste\Model\bin\Debug\net5.0\ref\Model.dll
+C:\Users\rafan\Documents\teste\Model\bin\Debug\net5.0\Model.pdb
+C:\Users\rafan\Documents\teste\Model\obj\Debug\net5.0\Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rafan\Documents\teste\Model\obj\Debug\net5.0\Model.AssemblyInfoInputs.cache
+C:\Users\rafan\Documents\teste\Model\obj\Debug\net5.0\Model.AssemblyInfo.cs
+C:\Users\rafan\Documents\teste\Model\obj\Debug\net5.0\Model.csproj.CoreCompileInputs.cache
+C:\Users\rafan\Documents\teste\Model\obj\Debug\net5.0\Model.dll
+C:\Users\rafan\Documents\teste\Model\obj\Debug\net5.0\ref\Model.dll
+C:\Users\rafan\Documents\teste\Model\obj\Debug\net5.0\Model.pdb
