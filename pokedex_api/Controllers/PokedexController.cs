@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using Domain;
 using Model;
+using System.Threading.Tasks;
 
 namespace pokedex_api.Controllers
 {
@@ -86,6 +87,15 @@ namespace pokedex_api.Controllers
             {
                 throw new Exception(e.Message);
             }
+        }
+
+        [HttpPost]
+        public StatusCodeResult RegisterPokemon(Pokemon pokemon)
+        {
+            var database = _dbConnnect.Connect();
+            var pokemonCollection = database.GetCollection<Pokemon>("pokemon");
+            pokemonCollection.InsertOneAsync(pokemon);
+            return new StatusCodeResult(200);
         }
     }
 }
